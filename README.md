@@ -1,6 +1,18 @@
 # java-pebble-timeline
 
-This is a Java library for the Pebble Timeline API. Documentation for the full api can be found [here](https://developer.getpebble.com/guides/timeline/). 
+This is a Java library for the Pebble Timeline API. Documentation for the full api can be found [here](https://developer.getpebble.com/guides/timeline/pin-structure/). 
+
+### Installation
+
+Using maven:
+
+```
+<dependency>
+	<groupId>nl.palolem</groupId>
+	<artifactId>pebble-timeline</artifactId>
+	<version>1.0</version>
+</dependency>
+```
 
 ### Usage
 
