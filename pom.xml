@@ -3,7 +3,7 @@
 
   <groupId>nl.palolem</groupId>
   <artifactId>pebble-timeline</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
   <name>pebble-timeline</name>
@@ -34,7 +34,7 @@
     <connection>scm:git:git@github.com:idserda/java-pebble-timeline.git</connection>
     <developerConnection>scm:git:git@github.com:idserda/java-pebble-timeline.git</developerConnection>
     <url>git@github.com:idserda/java-pebble-timeline.git</url>
-    <tag>HEAD</tag>
+    <tag>pebble-timeline-1.1</tag>
   </scm>
   
   <distributionManagement>
