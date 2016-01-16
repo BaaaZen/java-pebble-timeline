@@ -34,6 +34,22 @@ public class SerializeTest extends AbstractTest {
 	}
 
 	@Test
+	public void testHeadingsAndParagraphs() throws IOException {
+		Pin pin = new Pin.Builder().id("reservation-1395203")
+				.time(new Date())
+				.layout(new GenericPin.Builder().title("Test")
+						.heading("Heading 1")
+						.paragraph("Paragraph 1")
+						.heading("Heading 2")
+						.paragraph("Paragraph 2")
+						.lastUpdated(new Date())
+						.build())
+				.build();
+
+		System.out.println(Timeline.serializeAndFormat(pin));
+	}
+
+	@Test
 	public void testSendPin() throws JsonProcessingException {
 		Pin pin = new Pin.Builder().time(getDate("2015-11-30T23:00:00Z"))
 				.id("example-pin-generic-2")

@@ -1,5 +1,9 @@
 package nl.palolem.timeline.api.pin.layout;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import nl.palolem.timeline.api.pin.Icon;
 import nl.palolem.timeline.util.AbstractBuilder;
 import nl.palolem.timeline.util.StringUtil;
@@ -37,7 +41,11 @@ public abstract class Layout {
 
 	protected String backgroundColor;
 
-	// TODO : Headings, paragraphs, lastUpdate
+	protected List<String> headings = new ArrayList<String>();
+
+	protected List<String> paragraphs = new ArrayList<String>();
+
+	protected Date lastUpdated;
 
 	public Layout(LayoutType type) {
 		this.type = type;
@@ -81,6 +89,30 @@ public abstract class Layout {
 
 	public String getBackgroundColor() {
 		return backgroundColor;
+	}
+
+	public List<String> getHeadings() {
+		return headings;
+	}
+
+	public void setHeadings(List<String> headings) {
+		this.headings = headings;
+	}
+
+	public List<String> getParagraphs() {
+		return paragraphs;
+	}
+
+	public void setParagraphs(List<String> paragraphs) {
+		this.paragraphs = paragraphs;
+	}
+
+	public Date getLastUpdated() {
+		return lastUpdated;
+	}
+
+	public void setLastUpdated(Date lastUpdated) {
+		this.lastUpdated = lastUpdated;
 	}
 
 	protected static abstract class Builder<T extends Layout, B extends Builder<T, B>> extends AbstractBuilder<T, B> {
@@ -127,6 +159,21 @@ public abstract class Layout {
 
 		public B backgroundColor(String backgroundColor) {
 			object.backgroundColor = backgroundColor;
+			return builder;
+		}
+
+		public B heading(String heading) {
+			object.headings.add(heading);
+			return builder;
+		}
+
+		public B paragraph(String paragraph) {
+			object.paragraphs.add(paragraph);
+			return builder;
+		}
+
+		public B lastUpdated(Date lastUpdated) {
+			object.lastUpdated = lastUpdated;
 			return builder;
 		}
 	}
