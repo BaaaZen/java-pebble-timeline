@@ -10,7 +10,7 @@ Using maven:
 <dependency>
 	<groupId>nl.palolem</groupId>
 	<artifactId>pebble-timeline</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 </dependency>
 ```
 
