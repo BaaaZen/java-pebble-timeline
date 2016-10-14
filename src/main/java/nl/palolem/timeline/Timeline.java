@@ -51,6 +51,35 @@ public class Timeline {
 		}
 	}
 
+	public static void deletePin(String token, Pin pin) throws IOException, PebbleException {
+		String url = String.format("%s/%s", PINS_URL, pin.getId());
+
+		HttpURLConnection connection = null;
+
+		try {
+			connection = (HttpURLConnection) new URL(url).openConnection();
+			connection.setDoOutput(true);
+			connection.setRequestMethod("DELETE");
+			connection.setRequestProperty("Content-Type", "application/json");
+			connection.setRequestProperty("X-User-Token", token);
+
+			OutputStream os = connection.getOutputStream();
+			mapper.writer().writeValue(os, pin);
+			os.flush();
+
+			int statusCode = connection.getResponseCode();
+			if (statusCode != 200) {
+				InputStream is = connection.getErrorStream();
+				Response response = mapper.readValue(is, Response.class);
+				throw new PebbleException(String.format("Error deleting pin: %s", response.getSummary()), response);
+			}
+		} finally {
+			if (connection != null) {
+				connection.disconnect();
+			}
+		}
+	}
+
 	public static String serialize(Pin pin) throws JsonProcessingException {
 		return mapper.writeValueAsString(pin);
 	}
